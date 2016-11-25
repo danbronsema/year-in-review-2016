@@ -1,0 +1,26 @@
+---
+layout: layout
+---
+{% include base.html %}
+
+<div class='content full {{page.color}}'>
+	<div class='island'>
+		{{ content }}
+	</div>
+
+  <div id='page-navigation' class='cf'> 
+    <div class='right'> 
+    {% if page.previous.url %} 
+      <a href='{{ base}}{{page.previous.url}}' title='Previous Post: 
+  {{page.previous.title}}' class='btn'>{{page.previous.title}} &rarr;</a> 
+    {% endif %} 
+    </div> 
+    <div class='left'> 
+    {% if page.next.url %} 
+      <a href='{{ base}}{{page.next.url}}' title='next Post: 
+  {{page.next.title}}' class='btn'>&larr; {{page.next.title}}</a> 
+    {% endif %} 
+    </div> 
+  </div> 
+
+</div>

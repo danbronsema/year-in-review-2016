@@ -1,0 +1,98 @@
+---
+layout: layout
+---
+{% include base.html %}
+
+<div class="heading {%if page.color%}{{page.color}}{%endif%}">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-9">
+      <h1>{{ page.title }}</h1>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container {%if page.color%}{{page.color}}{%endif%}">
+  <div class="row">
+    <div class="col-sm-9 article-content roadmap">
+      <div class="article-body">
+      {{ content }}
+      </div>
+  <div class="row prev-next-navigation">
+    <div class="btn-group btn-group-justified">
+      {% if page.next.url %} 
+      <a href='{{ base}}{{page.next.url}}' title='next Post: 
+      {{page.next.title}}' class='btn btn-default'>&larr; <span class="hidden-sm hidden-xs">{{ page.next.title | truncate: 50}}</span></a> 
+      {% endif %} 
+      {% if page.previous.url %}
+      <a href='{{ base}}{{page.previous.url}}' title='Previous Post: 
+      {{page.previous.title}}{{page.previous.subtitle}}' class='btn btn-default'><span class="hidden-sm hidden-xs">{{ page.previous.title | truncate: 50 }} </span>&rarr;</a> 
+      {% endif %} 
+    </div>
+  </div>      
+    </div>
+    <hr class="visible-xs">
+
+    <div class="col-sm-3">
+      <div class="list-wrapper
+      {% if page.categories contains 'our-financial-supporters' %}
+      our-financial-supporters-active
+      {% endif %}  
+      {% if page.categories contains 'our-people' %}
+      our-people-active
+      {% endif %}  
+      ">
+        <div class="list-group">
+          {% for cat in page.categories[0] %}
+          {% for post in site.categories[cat] %}
+
+          <a class="list-group-item 
+
+          {% if page.title == post.title %}active{% endif %}  
+          {% if post.categories contains 'sub-menu' %}sub-menu{% endif %}
+
+          {% if post.categories contains 'our-financial-supporters' %}
+          sub-menu-financial-supporters
+          {% endif %}
+          
+          {% if page.categories contains 'our-financial-supporters' %}
+          {% if post.title == 'Our financial supporters' %}
+          active-title
+          {% endif %}
+          {% endif %}
+
+          {% if post.categories contains 'our-people' %}
+          sub-menu-our-people
+          {% endif %}
+          
+          {% if page.categories contains 'our-people' %}
+          {% if post.title == 'Red Cross people' %}
+          active-title
+          {% endif %}
+          {% endif %}
+
+          " href="{{ base}}{{ post.url }}">{% if post.menu_title %}{{post.menu_title}}{% else %}{{ post.title }}{% endif %}</a>
+          {% endfor %}
+          {% endfor %}
+          {% if page.categories contains 'financials' %}
+          <a class="list-group-item" href="http://redcross.org.au/files/Financials_2016.pdf" target="_blank">Full financial report [PDF]</a>
+          {% endif %}
+          <br>
+              <div class="btn-group btn-group-justified">
+      {% if page.next.url %} 
+      <a href='{{ base}}{{page.next.url}}' title='Previous post: 
+      {{page.next.title}}' class='btn btn-default'>&larr; <span class="hidden-sm hidden-xs">Prev</span></a> 
+      {% endif %} 
+      {% if page.previous.url %}
+      <a href='{{ base}}{{page.previous.url}}' title='Next Post: 
+      {{page.previous.title}}{{page.previous.subtitle}}' class='btn btn-default next-post'><span class="hidden-sm hidden-xs">Next </span>&rarr;</a> 
+      {% endif %} 
+    </div>
+
+        </div>
+      </div> 
+    </div> <!-- End col-sm-3 affix -->
+  </div> <!-- End side row -->
+
+</div> <!-- End Container -->

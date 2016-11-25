@@ -1,0 +1,172 @@
+{% include base.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>{{ site.name }}</title>
+
+  <!-- Bootstrap -->
+  <link href="{{ site.baseurl }}/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/css/style.css" rel="stylesheet">
+  <link href="{{ site.baseurl }}/css/fonts.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <link rel="Shortcut Icon" href="http://www.redcross.org.au/common/images/icons/favicon.ico">  <!-- <link href="{{ site.baseurl }}/css/font-awesome.min.css" rel="stylesheet"> -->
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="{{ site.baseurl}}/js/html5shiv.min.js"></script>
+      <script src="{{ site.baseurl}}/js/respond.min.js"></script>
+      <link href="{{ site.baseurl }}/css/ie-style.css" rel="stylesheet">
+      <![endif]-->
+    </head>
+    <body>
+      
+      <div class="navigation-wrapper">
+        
+        <div class="container">
+          <div class="">
+            <a class="navbar-brand" href="index.html">
+              <img alt="Red Cross" src="{{ site.baseurl }}/img/red-cross-logo-large.jpg" width="203" height="99">
+            </a>
+          </div>
+          <h1 class='pull-right year-in-review-title hidden-xs hidden-sm'><a href="{{ site.baseurl }}/">A year in review 2015/2016</a></h1>
+          <h1 class='pull-right year-in-review-title visible-sm'>A year in review<br>2015/2016</h1>              
+        </div>
+        
+        <div class="container">
+        <h1 class='pull-left year-in-review-title hidden-sm hidden-md hidden-lg'>A year in review 2015/2016</h1>
+        </div>
+
+        <div class="container mobile-navigation-container visible-sm visible-xs text-center">
+          <a id="mobile-navigation-btn" class="mobile-navigation-btn" href="#"><span class="glyphicon glyphicon-menu-hamburger" aria-hidden="true"> </span> View contents</a>
+          <div class="mobile-navigation" id="mobile-navigation">
+            <div class="list-group">
+              <a href="{{ site.baseurl }}/" class="list-group-item">Home</a>
+              <a href="{{ site.baseurl }}/{% post_url /01-about-red-cross/2012-12-30-from-the-president-ceo %}" class="list-group-item">About</a>
+              <a href="{{ site.baseurl }}/{% post_url /01-year-in-review/2012-12-26-goal-1 %}" class="list-group-item">Our work</a>
+              <a href="{{ site.baseurl }}/{% post_url /01-year-in-review/2012-12-14-our-people-and-supporters %}" class="list-group-item">People making a difference</a>
+              <a href="{{ site.baseurl }}/{% post_url /02-governance/2012-05-23-governance-and-management %}" class="list-group-item">Guiding the organisation</a>
+              <a href="{{ site.baseurl }}/{% post_url /03-financials/2012-02-30-our-financials %}" class="list-group-item">Financials</a>
+              <a href="{{ site.baseurl }}/{% post_url /04-how-you-can-help/2012-01-30-how-you-can-help %}" class="list-group-item">How you can help</a>
+
+
+            </ul>
+          </div>
+        </div>
+      </div>
+
+        <div class="container">
+          <div class="main-nav hidden-sm hidden-xs" id="navbar">
+            <ul class="nav navbar-nav">
+              <li class="{% if page.title == 'index' %}active{% endif %} first"><a href="{{ site.baseurl }}/">Home</a></li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle {% if page.categories contains 'about-red-cross' %}active{% endif %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">About Red Cross <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% for cat in site.categories.about-red-cross %}
+                    <li><a href="{{ site.baseurl }}{{cat['url']}}">{{ cat.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle {% if page.categories contains 'our-work' %}active{% endif %}" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Our work <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% for cat in site.categories.our-work %}
+                    <li><a href="{{ site.baseurl }}{{cat['url']}}">{{ cat.subtitle }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>              
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">People making a difference <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% for cat in site.categories.our-people-nav %}
+                    <li><a href="{{ site.baseurl }}{{cat['url']}}">{{ cat.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>      
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Guiding the organisation <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% for cat in site.categories.governance %}
+                    <li><a href="{{ site.baseurl }}{{cat['url']}}">{{ cat.title }}</a></li>
+                  {% endfor %}
+                </ul>
+              </li>  
+
+              <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Financials <span class="caret"></span></a>
+                <ul class="dropdown-menu">
+                  {% for cat in site.categories.financials %}
+                    <li><a href="{{ site.baseurl }}{{cat['url']}}">{% if cat.menu_title %}{{cat.menu_title}}{% else %}{{ cat.title }}{% endif %}</a></li>
+                  {% endfor %}
+                  <li><a href="http://www.redcross.org.au/files/Red_Cross_Financials_2015-2016.pdf" target="_blank">Full financial report [PDF]</a></li>
+                </ul>
+              </li>  
+
+              <li class="{% if page.categories[0] == 'how-you-can-help' %}active{% endif %}">
+                <a href="{{ site.baseurl }}{{ site.categories.how-you-can-help[0]['url'] }}" class="last">How you can help</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+      
+      {{ content }}
+
+      <div class="footer-wrapper">
+        <div class="container container-padding">
+          <div class="row">
+            <div class="col-xs-12 col-sm-9 col-md-9 col-lg-10">
+             {% if page.title == 'index' %}<p>Cover image: Red Cross is working with Aboriginal and Torres Strait Islander youth, supporting them to feel strong in their culture and identity. We support their wellbeing through projects like the Welcome to my Country camp, where participants talked about their pride in who they are and where they're from. Photo: Australian Red Cross / Michael Torres</p>
+             {% endif %}
+             
+             <p>This document may contain the names and/or images of Aboriginal and Torres Strait Islander individuals now deceased. Red Cross acknowledges the Traditional Owners of this land, their ancestors and Elders, past and present.</p>
+             <h3>Let us know what you think</h3>
+             <p>Any feedback or complaints about Red Cross or our work can be made at <a href="www.redcross.org.au">redcross.org.au</a> or by calling 1800 811 700. We welcome your feedback on this annual report – contact the editorial team at <a href="mailto:publications@redcross.org.au">publications@redcross.org.au.</a></p>
+
+           </div>
+           <div class="hidden-xs col-sm-3 col-md-3 col-lg-2 text-right">
+            <img alt="Red Cross" class="img-responsive" src="{{ site.baseurl}}/img/redcross_logo-white.png">
+          </div>
+          <div class="visible-xs small-logo" style="clear:both;">
+            <img alt="Red Cross" class="img-responsive" src="{{ site.baseurl}}/img/redcross_logo-white.png" width="200">
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>    
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="{{ site.baseurl }}/js/bootstrap.min.js"></script>
+
+    <script>
+    $(function() {
+      $("#submenu-dropdown-btn").click(function(e){
+        e.preventDefault();
+        $('#submenu-dropdown').slideToggle(200);
+      });
+      $("#submenu-dropdown-btn-1").click(function(e){
+        e.preventDefault();
+        $('#submenu-dropdown-1').slideToggle(200);
+      });
+      $("#mobile-navigation-btn").click(function(e){
+        e.preventDefault();
+        $('#mobile-navigation').slideToggle(200);
+      });
+      $('.article-body a').attr('target', '_blank' );
+      $('.no-link').attr('target', '_self' );
+
+
+    });
+    </script>    
+  </body>
+  </html>

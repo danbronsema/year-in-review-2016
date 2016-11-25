@@ -1,0 +1,6 @@
+_site/
+_files/
+.sass-cache/
+.jekyll-metadata
+*.psd
+*.json
